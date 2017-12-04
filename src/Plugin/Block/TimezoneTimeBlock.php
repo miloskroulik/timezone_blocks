@@ -16,12 +16,14 @@ use Drupal\Core\Form\FormStateInterface;
  * @Block(
  *   id = "timezone_time",
  *   admin_label="Timezone Time",
+ *   deriver = "Drupal\timezone_blocks\Plugin\Derivative\TimezoneDeriver"
  * )
  */
 class TimezoneTimeBlock extends BlockBase implements BlockPluginInterface {
 
   /**
    * @return array
+   * Demonstrates how to get derivative ID
    */
   public function build() {
     $config = $this->getConfiguration();
@@ -29,7 +31,7 @@ class TimezoneTimeBlock extends BlockBase implements BlockPluginInterface {
     $timezone = $timezone_identifiers[$config['timezone']];
     $time = \Drupal\Core\Datetime\DrupalDateTime::createFromTimestamp(time(), new \DateTimeZone($timezone))->format('G:i');
     return [
-      '#markup' => 'Je právě ' . $time
+      '#markup' => 'Je právě ' . $time . $this->getDerivativeId()
     ];
   }
 
