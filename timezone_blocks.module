@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains timezone_blocks.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function timezone_blocks_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the timezone_blocks module.
+    case 'help.page.timezone_blocks':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Exercise in using block deriver to provide many blocks from one definition') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function timezone_blocks_theme() {
+  return [
+    'timezone_blocks' => [
+      'render element' => 'children',
+    ],
+  ];
+}

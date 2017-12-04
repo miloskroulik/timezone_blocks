@@ -1,0 +1,5 @@
+name: timezone_blocks
+type: module
+description: Exercise in using block deriver to provide many blocks from one definition
+core: 8.x
+package: Custom
